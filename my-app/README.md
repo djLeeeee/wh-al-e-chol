@@ -1,4 +1,4 @@
-# whalechol
+# my-app
 
 ## Project setup
 ```
