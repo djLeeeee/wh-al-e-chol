@@ -4,6 +4,7 @@
       <q-input v-model="inputID" label="ID" :dense="dense" />
       <q-input v-model="inputPW" label="PW" :dense="dense" type="password" />
       <q-btn outline color="primary" label="Login" />
+      <q-btn outline color="primary" label="Sign In" router-link to="/signin" />
     </div>
   </div>
 </template>
@@ -15,7 +16,7 @@
 import { ref } from 'vue'
 
 export default {
-  name: 'HelloWorld',
+  name: 'LogIn',
   setup () {
     return {
       inputID: ref(''),

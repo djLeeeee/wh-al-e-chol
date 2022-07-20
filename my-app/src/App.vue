@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          <router-link to="/" class="home-link">술고래 매장 관리</router-link>
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
@@ -27,75 +27,72 @@
     >
       <q-list>
         <q-item-label header>Menu</q-item-label>
-        <q-item clickable tag="a" target="_blank" href="https://quasar.dev">
+
+        <q-item clickable tag="a" router-link to="/">
           <q-item-section avatar>
-            <q-icon name="school" />
+            <q-icon name="text_snippet" />
           </q-item-section>
           <q-item-section>
-            <q-item-label>Docs</q-item-label>
-            <q-item-label caption>quasar.dev</q-item-label>
+            <q-item-label>DATABASE</q-item-label>
+            <q-item-label caption>주류 재고 데이터 관리</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://github.com/quasarframework/">
+
+        <q-item clickable tag="a" router-link to="/analysis">
           <q-item-section avatar>
-            <q-icon name="code" />
+            <q-icon name="analytics" />
           </q-item-section>
           <q-item-section>
-            <q-item-label>Github</q-item-label>
-            <q-item-label caption>github.com/quasarframework</q-item-label>
+            <q-item-label>ANALYTIC</q-item-label>
+            <q-item-label caption>데이터 분석</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://chat.quasar.dev">
+
+        <q-item clickable tag="a" router-link to="/request">
           <q-item-section avatar>
-            <q-icon name="chat" />
+            <q-icon name="outgoing_mail" />
           </q-item-section>
           <q-item-section>
-            <q-item-label>Discord Chat Channel</q-item-label>
-            <q-item-label caption>chat.quasar.dev</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://forum.quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="forum" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Forum</q-item-label>
-            <q-item-label caption>forum.quasar.dev</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://twitter.com/quasarframework">
-          <q-item-section avatar>
-            <q-icon name="rss_feed" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Twitter</q-item-label>
-            <q-item-label caption>@quasarframework</q-item-label>
+            <q-item-label>REQUEST</q-item-label>
+            <q-item-label caption>요청 보내기</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
     </q-drawer>
 
     <q-page-container>
-      <HelloWorld />
+      <router-view />
     </q-page-container>
   </q-layout>
 </template>
 
+<style scoped>
+  .home-link {
+    color: white;
+    text-decoration: none;
+    transition: .3s;
+  }
+
+  .home-link:hover {
+    color: #F0C2C2;
+    transform: scale(1.1);
+  }
+</style>
+
 <script>
-import { ref } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+  import { ref } from 'vue'
 
-export default {
-  name: 'LayoutDefault',
+  export default {
+    name: 'LayoutDefault',
 
-  components: {
-    HelloWorld
-  },
+    components: {
+      
+    },
 
-  setup () {
-    return {
-      leftDrawerOpen: ref(false)
+    setup () {
+      return {
+        leftDrawerOpen: ref(false)
+      }
     }
   }
-}
 </script>
