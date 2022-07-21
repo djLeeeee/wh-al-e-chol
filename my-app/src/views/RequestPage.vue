@@ -1,11 +1,9 @@
 <template>
-  <div class="q-pa-md" style="max-width: 500px">
-    <q-input
-      v-model="text"
-      filled
-      autogrow
-    />
-    <q-btn outline color="primary" label="Send" @click="sendRequest(text)" />
+  <div class="q-pa-md">
+    <div class="q-gutter-y-md column" style="max-width: 500px">
+      <q-input v-model="state.text" filled autogrow/>
+      <q-btn outline color="primary" label="Send" @click="sendRequest(state.text)" />
+    </div>
   </div>
 </template>
 
@@ -13,16 +11,22 @@
 </style>
 
 <script>
+import { reactive } from 'vue'
+
 export default {
   name: 'RequestPage',
   setup () {
-    const text = ''
+    const state = reactive({
+      text: '',
+    })
     const sendRequest = (input) => {
-      console.log(input)
+      if (!input) {
+        alert('입력값이 없습니다!')
+      }
+      state.text = ''
     }
-
     return {
-      text,
+      state,
       sendRequest
     }
   }
