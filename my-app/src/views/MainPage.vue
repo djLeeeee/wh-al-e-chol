@@ -2,7 +2,6 @@
   <div class="q-pa-md">
     <q-table
       title="Shop DB"
-      dense
       @row-click="goTo"
       :rows="rows"
       :columns="columns"
