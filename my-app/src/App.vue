@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated class="glossy">
+    <q-header elevated class="navbar">
       <q-toolbar>
         <q-btn
           flat
@@ -9,6 +9,7 @@
           @click="leftDrawerOpen = !leftDrawerOpen"
           aria-label="Menu"
           icon="menu"
+          id="menuButton"
         />
 
         <q-toolbar-title>
@@ -67,6 +68,26 @@
 </template>
 
 <style scoped>
+  @font-face {
+    font-family: 'MaruBuri';
+    font-weight: 400; 
+    font-style: normal; 
+    src: url(https://cdn.jsdelivr.net/gh/webfontworld/naver/MaruBuri-Regular.woff2) format('woff2');
+    font-display: swap;
+  }
+
+  @font-face {
+      font-family: 'SeoulHangangC';
+      font-weight: 300;
+      font-style: normal;
+      src: url('https://cdn.jsdelivr.net/gh/webfontworld/seoulhangang/SeoulHangangCLight.eot');
+      src: url('https://cdn.jsdelivr.net/gh/webfontworld/seoulhangang/SeoulHangangCLight.eot?#iefix') format('embedded-opentype'),
+          url('https://cdn.jsdelivr.net/gh/webfontworld/seoulhangang/SeoulHangangCLight.woff2') format('woff2'),
+          url('https://cdn.jsdelivr.net/gh/webfontworld/seoulhangang/SeoulHangangCLight.woff') format('woff'),
+          url('https://cdn.jsdelivr.net/gh/webfontworld/seoulhangang/SeoulHangangCLight.ttf') format("truetype");
+      font-display: swap;
+  }
+
   .home-link {
     color: white;
     text-decoration: none;
@@ -77,6 +98,13 @@
     color: #F0C2C2;
     transform: scale(1.1);
   }
+
+  .navbar {
+    background-color: #203864;
+    font-family: 'MaruBuri';
+  }
+
+
 </style>
 
 <script>
