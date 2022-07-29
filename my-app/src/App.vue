@@ -16,19 +16,32 @@
           <router-link to="/" class="home-link">술고래 매장 관리</router-link>
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <q-input dark dense standout v-model="searchText" input-class="text-right" class="q-ml-md" @keyup.enter="searchText = ''">
+          <template v-slot:append>
+            <q-icon v-if="searchText === ''" name="search" />
+            <q-icon v-else name="clear" class="cursor-pointer" @click="searchText = ''" />
+          </template>
+        </q-input>
+        <span class="q-mx-sm">
+          <!-- {{ 점주 이름? }} -->
+          매장 이름
+          <q-tooltip color="black">개인 정보</q-tooltip>
+        </span>
+          
       </q-toolbar>
     </q-header>
 
     <q-drawer
       v-model="leftDrawerOpen"
-      show-if-above
+      overlay
       bordered
       class="bg-grey-2"
     >
       <q-list>
-        <q-item-label header>Menu</q-item-label>
-
+        <q-item-label header class="row justify-between items-center">
+          <span class="text-weight-bold">메뉴</span>
+          <q-icon name="close" size="1.5rem" color="dark" @click="leftDrawerOpen = !leftDrawerOpen"/>
+        </q-item-label>
         <q-item clickable tag="a" router-link to="/">
           <q-item-section avatar>
             <q-icon name="text_snippet" />
@@ -96,7 +109,6 @@
 
   .home-link:hover {
     color: #F0C2C2;
-    transform: scale(1.1);
   }
 
   .navbar {
@@ -111,7 +123,7 @@
   import { ref } from 'vue'
 
   export default {
-    name: 'LayoutDefault',
+    name: 'MainTemplate',
 
     components: {
       
@@ -119,7 +131,8 @@
 
     setup () {
       return {
-        leftDrawerOpen: ref(false)
+        leftDrawerOpen: ref(false),
+        searchText: ref(''),
       }
     }
   }
