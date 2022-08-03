@@ -1,12 +1,12 @@
 <template>
   <div class="q-pa-md">
     <div class="q-gutter-y-md column" style="max-width: 300px">
-      <q-input v-model="inputID" label="ID" :dense="dense" />
-      <q-input v-model="inputPW" label="PW" :dense="dense" type="password" />
-      <div :dense="dense" class="row justify-between">
+      <q-input v-model="state.Member_ID" label="ID" dense />
+      <q-input v-model="state.Password" label="PW" dense type="password" />
+      <div dense class="row justify-between">
         <q-btn flat color="primary" label="ID/PW 찾기" />
         <q-btn color="secondary" label="회원가입" router-link to="/signin" />
-        <q-btn color="primary" label="로그인" />
+        <q-btn color="primary" label="로그인" @click="login(state)" />
       </div>
     </div>
   </div>
@@ -16,16 +16,29 @@
 </style>
 
 <script>
-import { ref } from 'vue'
+import router from '@/router'
+import { reactive, computed } from 'vue'
+import { useStore, mapActions } from 'vuex'
 
 export default {
   name: 'LogIn',
   setup () {
-    return {
-      inputID: ref(''),
-      inputPW: ref(''),
-      dense: ref(false)
+    const state = reactive({
+      Member_ID: '',
+      Password: '',
+    })
+
+    const store = useStore()
+    const isLoggedIn = computed(() => store.getters.isLoggedIn)
+
+    if (isLoggedIn.value) {
+      router.push({ name: 'main' })
     }
-  }
+
+    return {
+      state,
+      ...mapActions(['login']),
+    }
+  },
 }
 </script>

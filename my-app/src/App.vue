@@ -10,10 +10,12 @@
           aria-label="Menu"
           icon="menu"
           id="menuButton"
+          :disabled="!isLoggedIn"
         />
 
         <q-toolbar-title>
-          <router-link to="/" class="home-link">술고래 매장 관리</router-link>
+          <router-link to="/" class="home-link" v-if="isLoggedIn">술고래 매장 관리</router-link>
+          <span v-else class="home-link">술고래 매장 관리</span>
         </q-toolbar-title>
 
         <q-input dark dense standout v-model="searchText" input-class="text-right" class="q-ml-md" @keyup.enter="searchText = ''">
@@ -23,7 +25,6 @@
           </template>
         </q-input>
         <span class="q-mx-sm">
-          <!-- {{ 점주 이름? }} -->
           매장 이름
           <q-tooltip color="black">개인 정보</q-tooltip>
         </span>
@@ -120,20 +121,26 @@
 </style>
 
 <script>
-  import { ref } from 'vue'
+  import router from '@/router'
+  import { ref, computed } from 'vue'
+  import { useStore } from 'vuex'
 
   export default {
     name: 'MainTemplate',
-
-    components: {
-      
-    },
-
     setup () {
+
+      const store = useStore()
+      const isLoggedIn = computed(() => store.getters.isLoggedIn)
+
+      if (!isLoggedIn.value) {
+        router.push({ name: 'login' })
+      }
+
       return {
         leftDrawerOpen: ref(false),
         searchText: ref(''),
+        isLoggedIn: isLoggedIn.value
       }
-    }
+    },
   }
 </script>

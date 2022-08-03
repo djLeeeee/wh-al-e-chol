@@ -1,17 +1,17 @@
 <template>
   <div class="q-pa-md">
     <div class="q-gutter-y-md column" style="max-width: 300px">
-      <q-input v-model="state.inputID" label="ID" :dense="state.dense">
+      <q-input v-model="state.Member_ID" label="ID" >
         <template v-slot:append>
-          <q-btn dense color="primary" @click="duplicateCheck(state.inputID)">중복 확인</q-btn>
+          <q-btn dense color="primary" @click="duplicateCheck(state.Member_ID)">중복 확인</q-btn>
         </template>
       </q-input>
-      <q-input v-model="state.inputPW" label="PW" :dense="state.dense" type="password" />
-      <q-input v-model="state.inputPWConfirm" label="PW Confirm" :dense="state.dense" type="password" />
-      <q-input v-model="state.inputName" label="이름" :dense="state.dense" />
-      <q-input v-model="state.inputKiosk" label="키오스크 번호" :dense="state.dense" />
-      <q-input v-model="state.inputPhone" label="휴대폰" :dense="state.dense" />
-      <q-input v-model="state.inputEmail" label="이메일" :dense="state.dense" />
+      <q-input v-model="state.Password" label="PW" type="password" />
+      <q-input v-model="state.PasswordConfirm" label="PW Confirm" type="password" />
+      <q-input v-model="state.Name" label="이름" />
+      <q-input v-model="state.Kiosk_ID" label="키오스크 번호"  />
+      <q-input v-model="state.Phone" label="휴대폰" />
+      <q-input v-model="state.Email" label="이메일" />
       <q-btn color="primary" label="회원 가입" @click="signin(state)"/>
       <q-btn flat color="deep-orange" label="취소" router-link to="/login" />
     </div>
@@ -28,13 +28,13 @@ export default {
   name: 'SignIn',
   setup () {
     const state = reactive({
-      inputID: '',
-      inputPW: '',
-      inputPWConfirm: '',
-      inputName: '',
-      inputKiosk: '',
-      inputPhone: '',
-      inputEmail: '',
+      Member_ID: '',
+      Password: '',
+      PasswordConfirm: '',
+      Name: '',
+      Kiosk_ID: '',
+      Phone: '',
+      Email: '',
       dense: false,
     })
 

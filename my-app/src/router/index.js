@@ -4,10 +4,12 @@ import MainPage from '../views/MainPage.vue'
 const routes = [
   {
     path: '/',
+    name: 'main',
     component: MainPage
   },
   {
     path: '/login',
+    name: 'login',
     component: () => import('../views/LogIn.vue')
   },
   {
